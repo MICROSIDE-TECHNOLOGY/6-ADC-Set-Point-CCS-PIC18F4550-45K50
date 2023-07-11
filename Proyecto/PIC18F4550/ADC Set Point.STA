@@ -1,0 +1,46 @@
+
+ROM used:   94/32768 (0%)
+            98/32768 (0%) including unused fragments
+
+            0.1 Average locations per line
+            7.2 Average locations per statement
+
+RAM used:   5/2048 (0%) at main() level
+            5/2048 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   73    13 100  ADC Set Point.c
+  861     0   0  D:\Programas\PICC\Devices\18F4550.h
+----- -----
+  934    13 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     30  16    0     54  1.2  SisInit
+0     60  32    0    152  3.4  MAIN
+ Inline         0    362  2.3  @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              13
+    Comments                185
+    Volume (V)              725
+    Difficulty (D)          7.0
+    Effort to implement (E) 5063
+    Time to implement (T)   5 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    99
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-01FFE     0  8192  
+02000-02006     4  4  
+02008-07FFE    90  24478  
+
+
+

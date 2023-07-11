@@ -1,0 +1,64 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     ValorPot
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+002008  SisInit
+002026  MAIN
+002026  @cinit1
+002036  @cinit2
+
+Project Directory:
+    C:\Users\Martin Hdez\Desktop\18F4550\6 ADC Set Point\
+
+Project Files:
+    ADC Set Point.c                                         [30-nov.-20 13:54  CRC=47F4D7E6]
+    D:\Programas\PICC\Devices\18F4550.h                     [02-oct.-19 09:47  CRC=AFEA7A8E]
+
+Source signature=A7C9CD02
+Program memory checksum=0000
+Hex file CRC=BA01
+
+Units:
+    C:\Users\Martin Hdez\Desktop\18F4550\6 ADC Set Point\ADC Set Point (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   ADC Set Point.xsym
+    Errors:      ADC Set Point.err
+    Ext Symbols: ADC Set Point.esym
+    INHX32:      ADC Set Point.hex
+    Symbols:     ADC Set Point.sym
+    List:        ADC Set Point.lst
+    Debug/COFF:  ADC Set Point.cof
+    Project:     ADC Set Point.ccspjt
+    Call Tree:   ADC Set Point.tre
+    Statistics:  ADC Set Point.STA

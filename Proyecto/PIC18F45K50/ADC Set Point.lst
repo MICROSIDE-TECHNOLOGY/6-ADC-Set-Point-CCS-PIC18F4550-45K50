@@ -1,0 +1,148 @@
+CCS PCH C Compiler, Version 5.090, 13314               01-dic.-20 10:08
+
+               Filename:   C:\Users\Martin Hdez\Desktop\18F45K50\Práctica 6 – ADC Set Point\ADC Set Point.lst
+
+               ROM used:   120 bytes (0%)
+                           Largest free fragment is 24452
+               RAM used:   5 (0%) at main() level
+                           5 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+2000:  GOTO   2030
+.................... /*
+.................... AUTOR: MICROSIDE TECHNOLOGY S.A. DE C.V.
+.................... FECHA: JUNIO 2019
+.................... */
+.................... 
+.................... /*
+.................... ---------------------------------------------------------------------------
+.................... Implementar una lectura analógica de un potenciómetro, si el valor del ADC supera
+.................... un Set Point, el LED encenderá.
+.................... ---------------------------------------------------------------------------
+.................... */
+.................... 
+.................... #include <18F45K50.h>                     //Incluye el microcontrolador con el que se va a trabajar 
+.................... //////////// Standard Header file for the PIC18F45K50 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC18F45K50
+.................... 
+.................... #list
+.................... 
+.................... #DEVICE ADC=8                             //Configura el ADC a 8 bits
+.................... #use delay(internal=48MHz)                //Tipo de oscilador y frecuencia dependiendo del microcontrolador 
+.................... #build(reset=0x02000,interrupt=0x02008)   //Asigna los vectores de reset e interrupción para la versión con bootloader
+.................... #org 0x0000,0x1FFF {}                     //Reserva espacio en memoria para el bootloader
+.................... #define LED PIN_A1                        //Pin donde está conectado el LED de X-TRAINER
+.................... 
+.................... int ValorPot;                             //Variable para almacenar el valor leído del ADC
+.................... 
+.................... void SisInit(void)
+.................... 
+.................... {
+.................... setup_adc_ports (sAN0);                   //Configura solo el puerto A0 como entrada analógica
+*
+2008:  MOVF   FC1,W
+200A:  ANDLW  F0
+200C:  MOVWF  FC1
+200E:  MOVLW  01
+2010:  MOVLB  F
+2012:  MOVWF  x5B
+2014:  MOVLW  00
+2016:  MOVWF  x5F
+2018:  MOVWF  x5C
+201A:  MOVWF  x5D
+201C:  MOVWF  x5E
+.................... setup_adc (ADC_CLOCK_INTERNAL);           //Configura oscilador interno para la conversión
+201E:  MOVF   FC0,W
+2020:  ANDLW  C0
+2022:  IORLW  07
+2024:  MOVWF  FC0
+2026:  BCF    FC0.7
+2028:  BSF    FC2.0
+202A:  MOVLB  0
+202C:  GOTO   2052 (RETURN)
+.................... }
+.................... 
+.................... 
+.................... void main()
+2030:  CLRF   FF8
+2032:  BCF    FD0.7
+2034:  MOVLW  70
+2036:  MOVWF  FD3
+2038:  CLRF   FD2
+203A:  CLRF   F9B
+203C:  MOVLB  F
+203E:  CLRF   x5B
+2040:  CLRF   x5C
+2042:  CLRF   x5D
+2044:  CLRF   x5E
+2046:  CLRF   x5F
+2048:  CLRF   F9A
+204A:  CLRF   F99
+204C:  CLRF   F98
+.................... 
+.................... {
+....................     SisInit();
+204E:  MOVLB  0
+2050:  BRA    2008
+.................... 
+....................     while (1)
+.................... 
+....................   {
+....................        set_adc_channel (0);                //Selecciona el canal 0 para la conversión
+2052:  MOVLW  00
+2054:  MOVWF  01
+2056:  MOVF   FC2,W
+2058:  ANDLW  83
+205A:  IORWF  01,W
+205C:  MOVWF  FC2
+....................        ValorPot = read_adc ();             //Lee el valor del ADC y lo guarda en la variable
+205E:  BSF    FC2.1
+2060:  BTFSC  FC2.1
+2062:  BRA    2060
+2064:  MOVFF  FC4,04
+....................        
+....................       if (ValorPot >= 128)                 //Compara el valor de el ADC con 128
+2068:  MOVF   04,W
+206A:  SUBLW  7F
+206C:  BC    2074
+.................... 
+....................              {
+....................                      output_HIGH (LED);    // Leds activos
+206E:  BCF    F92.1
+2070:  BSF    F89.1
+....................              }
+2072:  BRA    2078
+.................... 
+....................       else
+.................... 
+....................              {
+....................                     output_LOW (LED);       // Leds activos
+2074:  BCF    F92.1
+2076:  BCF    F89.1
+....................              }
+2078:  BRA    2052
+....................        }
+.................... }
+.................... 
+207A:  SLEEP 
+....................  
+
+Configuration Fuses:
+   Word  1: C823   PLL3X PLLEN NOCPUDIV LS48MHZ INTRC_IO PRIMARY_SW FCMEN IESO
+   Word  2: 3C5E   PUT BROWNOUT BORV19 NOLPBOR NOWDT WDT32768
+   Word  3: D300   CCP2C1 PBADEN T3CKC0 SDOB3 MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
