@@ -5,8 +5,8 @@ FECHA: JUNIO 2019
 
 /*
 ---------------------------------------------------------------------------
-Implementar una lectura anal√≥gica de un potenci√≥metro, si el valor del ADC supera
-un Set Point, el LED encender√°.
+Implementar una lectura analÛgica de un potenciÛmetro, si el valor del ADC supera
+un Set Point, el LED encender·.
 ---------------------------------------------------------------------------
 */
 
@@ -14,12 +14,12 @@ un Set Point, el LED encender√°.
 #include <18F4550.h>                            //Incluye el microcontrolador con el que se va a trabajar 
 #DEVICE ADC=8                                   //Configura el ADC a 8 bits
 #use delay(clock=48Mhz, crystal)                //Tipo de oscilador y frecuencia dependiendo del microcontrolador 
-#build(reset=0x02000,interrupt=0x02008)         //Asigna los vectores de reset e interrupci√≥n para la versi√≥n con bootloader
+#build(reset=0x02000,interrupt=0x02008)         //Asigna los vectores de reset e interrupciÛn para la versiÛn con bootloader
 #org 0x0000,0x1FFF {}                           //Reserva espacio en memoria para el bootloader
 
-#define LED PIN_A1                              //Pin donde est√° conectado el LED del X-TRAINER
+#define LED PIN_A1                              //Pin donde est· conectado el LED del X-TRAINER
 
-int ValorPot;                                   //Variable para almacenar el valor le√≠do del ADC
+int ValorPot;                                   //Variable para almacenar el valor leÌdo del ADC
 
 void SisInit(void)
 
@@ -27,9 +27,9 @@ void SisInit(void)
 
 setup_oscillator(OSC_8MHZ);                    //Configura oscilador interno
 
-setup_adc_ports (AN0);                         //Configura solo el puerto A0 como entrada anal√≥gica
+setup_adc_ports (AN0);                         //Configura solo el puerto A0 como entrada analÛgica
 
-setup_adc (ADC_CLOCK_DIV_8);                   //Configura oscilador para la conversi√≥n
+setup_adc (ADC_CLOCK_DIV_8);                   //Configura oscilador para la conversiÛn
 
 }
 
@@ -45,7 +45,7 @@ void main()
 
   {
 
-       set_adc_channel (0);                 //Selecciona el canal 0 para la conversi√≥n
+       set_adc_channel (0);                 //Selecciona el canal 0 para la conversiÛn
 
        ValorPot = read_adc ();              //Lee el valor del ADC y lo guarda en la variable
 
