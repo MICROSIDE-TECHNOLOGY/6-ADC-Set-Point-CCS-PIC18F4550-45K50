@@ -7,40 +7,39 @@
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
-FBB     CCP_2
 FBB     CCP_2_LOW
+FBB     CCP_2
 FBC     CCP_2_HIGH
 FBE     CCP_1
 FBE     CCP_1_LOW
 FBF     CCP_1_HIGH
-FE1-FE2 @WRITE_PACKED_MEMORY.P1
-FE1-FE2 @READ_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PROGRAM_MEMORY.P1
-FE9-FEA @READ_PACKED_MEMORY.P2
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
 FE9-FEA @READ_PROGRAM_MEMORY.P3
-FE9-FEA @WRITE_PACKED_MEMORY.P4
-FF6-FF8 @READ_PROGRAM_MEMORY.P1
-FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
-002008  SisInit
-002026  MAIN
-002026  @cinit1
-002036  @cinit2
+002008  main
+002008  @cinit1
+002018  @cinit2
 
 Project Directory:
-    C:\Users\Martin Hdez\Desktop\18F4550\6 ADC Set Point\
+    C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\6-ADC-Set-Point-CCS-PIC18F4550-45K50\Proyecto\PIC18F4550\
 
 Project Files:
-    ADC Set Point.c                                         [30-nov.-20 13:54  CRC=47F4D7E6]
-    D:\Programas\PICC\Devices\18F4550.h                     [02-oct.-19 09:47  CRC=AFEA7A8E]
+    ADC Set Point.c                                         [30-ago.-23 14:04  CRC=74E485B6]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\Devices\18F4550.h [02-may.-23 08:34  CRC=3BACED27]
 
-Source signature=A7C9CD02
+Source signature=EC3E6004
 Program memory checksum=0000
-Hex file CRC=BA01
+Hex file CRC=D6A9
 
 Units:
-    C:\Users\Martin Hdez\Desktop\18F4550\6 ADC Set Point\ADC Set Point (main)
+    C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\6-ADC-Set-Point-CCS-PIC18F4550-45K50\Proyecto\PIC18F4550\ADC Set Point (main)
 
 Compiler Settings:
     Processor:      PIC18F4550
@@ -49,7 +48,10 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
-    Compile Mode:       CCS5
+    Compile Mode:   CCS5
+
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
 
 Output Files:
     XREF file:   ADC Set Point.xsym
